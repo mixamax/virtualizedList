@@ -1,0 +1,30 @@
+.main-page_container {
+    margin: 0 auto;
+    margin-top: 3rem;
+    height: 25rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    /* overflow-block: visible;
+    overflow-inline: scroll;
+    overscroll-behavior-block: contain; */
+    /* overflow: auto; */
+    border-radius: 5px;
+    border: solid 1px;
+}
+
+.main-page_container::-webkit-scrollbar {
+    width: 8px; /* ширина всей полосы прокрутки */
+}
+
+.main-page_container::-webkit-scrollbar-track {
+    background: grey; /* цвет зоны отслеживания */
+    border-radius: 0 4px 4px 0;
+    /* margin: 0.1rem 0; */
+}
+
+.main-page_container::-webkit-scrollbar-thumb {
+    background-color: blueviolet; /* цвет бегунка */
+    border-radius: 4px;
+}
