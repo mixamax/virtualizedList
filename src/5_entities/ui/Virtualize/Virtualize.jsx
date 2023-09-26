@@ -1,13 +1,16 @@
+// import React from "react";
+import style from "./virtualize.module.css";
+import { RowsMaker } from "../../model/RowsMaker";
+import { useGetPostsQuery } from "../../../6_shared/postApi";
 import { useState } from "react";
-import { useGetPostsQuery } from "../../6_shared/postApi";
-import { Post } from "./Post";
-import style from "./main_page.module.css";
 
-export const MainPage = () => {
-    const { data = [] } = useGetPostsQuery();
+export const Virtualize = (
+    ComponentInTheRow,
+    visibleRows = 5,
+    rowHeight = 5
+) => {
+    const { data = [] } = useGetPostsQuery("");
     const [start, setStart] = useState(0);
-    const visibleRows = 5;
-    const rowHeight = 5;
 
     function getTopHeight() {
         return rowHeight * start;
@@ -27,14 +30,7 @@ export const MainPage = () => {
     return (
         <div className={style["main-page_container"]} onScroll={onScroll}>
             <div style={{ minHeight: `${getTopHeight()}rem` }} />
-            {data.slice(start, start + visibleRows + 1).map((post) => (
-                <Post
-                    key={post.id}
-                    number={post.id}
-                    title={post.title}
-                    content={post.content}
-                />
-            ))}
+            {RowsMaker(data, ComponentInTheRow, start, visibleRows)}
             <div style={{ minHeight: `${getBottomHeight()}rem` }}></div>
         </div>
     );

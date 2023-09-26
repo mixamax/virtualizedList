@@ -1,6 +1,9 @@
-import { Button } from "../../6_shared/Button";
+import { Button } from "../../../6_shared/Button";
 import style from "./post.module.css";
-export const Post = ({ number, title, content }) => {
+
+export const Post = ({ data }) => {
+    const { id: number, title, content } = data;
+
     return (
         <div className={style["post"]}>
             {" "}

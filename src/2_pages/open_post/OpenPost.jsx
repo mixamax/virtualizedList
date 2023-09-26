@@ -3,11 +3,10 @@ import { Button } from "../../6_shared/Button";
 import styles from "./open_post.module.css";
 import { useGetPostsQuery } from "../../6_shared/postApi";
 
-export const OpenPost = () => {
+const OpenPost = () => {
     const { id } = useParams();
     const { data = [] } = useGetPostsQuery(id);
-    console.log(data);
-    console.log(id);
+
     return (
         <div className={styles["open-post_container"]}>
             <span>{data.id}</span>
@@ -17,3 +16,5 @@ export const OpenPost = () => {
         </div>
     );
 };
+
+export default OpenPost;
